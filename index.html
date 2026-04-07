@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Math Practice — Daily</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="paper-texture"></div>
+
+<!-- ============ LOGIN VIEW ============ -->
+<section id="view-login" class="view active">
+  <div class="login-wrap">
+    <div class="brand">
+      <div class="brand-mark">∑</div>
+      <h1 class="brand-title">Daily Math</h1>
+      <p class="brand-sub">A little practice, every day.</p>
+    </div>
+
+    <div class="card login-card">
+      <h2 class="card-title">Who's practicing today?</h2>
+      <div id="profile-picker" class="profile-picker">
+        <!-- Populated by JS based on configured profiles -->
+      </div>
+
+      <form id="login-form" class="login-form" autocomplete="off">
+        <label>
+          <span>PIN</span>
+          <input type="password" id="pin-input" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="••••" required />
+        </label>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        <p id="login-error" class="error-msg" hidden></p>
+      </form>
+
+      <p class="login-hint">First time? Ask the grown-up for your PIN.</p>
+    </div>
+
+    <p class="footer-note">Built with love · Practice makes progress</p>
+  </div>
+</section>
+
+<!-- ============ STUDENT DASHBOARD ============ -->
+<section id="view-student" class="view">
+  <header class="app-header">
+    <div class="header-left">
+      <div class="avatar-chip" id="student-avatar"></div>
+      <div>
+        <div class="header-greeting" id="student-greeting">Hi there!</div>
+        <div class="header-sub" id="student-class">Grade —</div>
+      </div>
+    </div>
+    <button class="btn btn-ghost" id="student-logout">Sign out</button>
+  </header>
+
+  <main class="student-main">
+    <div class="streak-banner">
+      <div class="streak-flame">🔥</div>
+      <div>
+        <div class="streak-num"><span id="streak-count">0</span> day streak</div>
+        <div class="streak-sub" id="streak-sub">Practice today to keep it going</div>
+      </div>
+    </div>
+
+    <div class="card start-card">
+      <h2 class="card-title">Today's Practice</h2>
+      <p class="card-desc">15 questions · mixed topics from your grade</p>
+
+      <div class="topic-pills" id="topic-pills"></div>
+
+      <button class="btn btn-primary btn-big" id="start-practice">Start Practice →</button>
+
+      <div id="today-done" class="done-note" hidden>
+        ✓ You've already practiced today — great work! You can still do more.
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-label">Sessions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-accuracy">—</div>
+        <div class="stat-label">Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-answered">0</div>
+        <div class="stat-label">Questions done</div>
+      </div>
+    </div>
+
+    <div class="card history-card">
+      <h3 class="card-title">Recent sessions</h3>
+      <div id="student-history" class="history-list">
+        <p class="empty">No sessions yet. Start your first practice above!</p>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ============ PRACTICE VIEW ============ -->
+<section id="view-practice" class="view">
+  <header class="practice-header">
+    <button class="btn btn-ghost" id="quit-practice">← Quit</button>
+    <div class="progress-wrap">
+      <div class="progress-text"><span id="q-num">1</span> / <span id="q-total">15</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+    <div class="score-chip"><span id="live-score">0</span> ✓</div>
+  </header>
+
+  <main class="practice-main">
+    <div class="q-topic" id="q-topic">Arithmetic</div>
+    <div class="q-card">
+      <div class="q-text" id="q-text">—</div>
+      <div class="q-options" id="q-options"></div>
+      <div class="q-feedback" id="q-feedback"></div>
+    </div>
+    <button class="btn btn-primary btn-big" id="next-q" hidden>Next →</button>
+  </main>
+</section>
+
+<!-- ============ RESULTS VIEW ============ -->
+<section id="view-results" class="view">
+  <main class="results-main">
+    <div class="results-hero">
+      <div class="results-emoji" id="results-emoji">🎉</div>
+      <h2 class="results-title" id="results-title">Nice work!</h2>
+      <div class="results-score">
+        <span id="results-correct">0</span> / <span id="results-total">15</span>
+      </div>
+      <div class="results-accuracy"><span id="results-pct">0</span>% accuracy</div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Review your answers</h3>
+      <div id="results-review" class="review-list"></div>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn btn-ghost" id="results-home">Back to dashboard</button>
+      <button class="btn btn-primary" id="results-again">Practice again</button>
+    </div>
+  </main>
+</section>
+
+<!-- ============ PARENT DASHBOARD ============ -->
+<section id="view-parent" class="view">
+  <header class="app-header">
+    <div class="header-left">
+      <div class="avatar-chip parent-chip">👤</div>
+      <div>
+        <div class="header-greeting">Parent view</div>
+        <div class="header-sub">Progress & review</div>
+      </div>
+    </div>
+    <button class="btn btn-ghost" id="parent-logout">Sign out</button>
+  </header>
+
+  <main class="parent-main">
+    <div class="kid-tabs" id="kid-tabs"></div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="p-stat-sessions">0</div>
+        <div class="stat-label">Total sessions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="p-stat-accuracy">—</div>
+        <div class="stat-label">Overall accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="p-stat-streak">0</div>
+        <div class="stat-label">Current streak</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="p-stat-week">0</div>
+        <div class="stat-label">This week</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Accuracy by topic</h3>
+      <div id="topic-breakdown" class="topic-breakdown">
+        <p class="empty">No data yet.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">All sessions</h3>
+      <div id="parent-sessions" class="parent-sessions">
+        <p class="empty">No sessions yet.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Questions they got wrong</h3>
+      <p class="card-desc">Common mistakes to review together</p>
+      <div id="parent-mistakes" class="mistakes-list">
+        <p class="empty">No mistakes logged yet.</p>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ============ SETUP MODAL (first run) ============ -->
+<div id="setup-modal" class="modal" hidden>
+  <div class="modal-card">
+    <h2>Welcome! Quick Setup</h2>
+    <p class="card-desc">This app is not connected to a database yet. Follow the steps in <code>README.md</code> to add your Firebase config to <code>firebase-config.js</code>. Until then the app will use local storage on this device only.</p>
+    <button class="btn btn-primary" id="setup-ok">Got it, continue with local storage</button>
+  </div>
+</div>
+
+<!-- app.js imports everything else as ES modules -->
+<script type="module" src="app.js"></script>
+</body>
+</html>
