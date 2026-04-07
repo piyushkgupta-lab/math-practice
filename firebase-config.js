@@ -7,12 +7,12 @@
 // ============================================================
 
 export const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY_HERE",
-  authDomain: "PASTE_YOUR_AUTH_DOMAIN_HERE",
-  projectId: "PASTE_YOUR_PROJECT_ID_HERE",
-  storageBucket: "PASTE_YOUR_STORAGE_BUCKET_HERE",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
-  appId: "PASTE_YOUR_APP_ID_HERE"
+apiKey: "AIzaSyDAqvV-PzwT_fIVgV17fYS_ZrwCAgLIZs4",
+  authDomain: "math-practice-daily.firebaseapp.com",
+  projectId: "math-practice-daily",
+  storageBucket: "math-practice-daily.firebasestorage.app",
+  messagingSenderId: "711620084942",
+  appId: "1:711620084942:web:013327038594c8b9d67c9f"
 };
 
 // ============================================================
@@ -24,7 +24,7 @@ export const firebaseConfig = {
 export const profiles = [
   {
     id: 'son',
-    name: 'Son',          // ← change to your son's name
+    name: 'Abir',          // ← change to your son's name
     emoji: '🦁',
     grade: 5,
     pin: '1234',          // ← change to a PIN your son will remember
@@ -32,10 +32,10 @@ export const profiles = [
   },
   {
     id: 'daughter',
-    name: 'Daughter',     // ← change to your daughter's name
+    name: 'Arianna',     // ← change to your daughter's name
     emoji: '🦊',
     grade: 7,
-    pin: '5678',          // ← change to a PIN your daughter will remember
+    pin: '1234',          // ← change to a PIN your daughter will remember
     role: 'student'
   },
   {
@@ -43,10 +43,11 @@ export const profiles = [
     name: 'Parent',
     emoji: '👤',
     grade: null,
-    pin: '9999',          // ← change to your own PIN
+    pin: '1707',          // ← change to your own PIN
     role: 'parent'
   }
 ];
 
 // Is Firebase configured?
 export const isFirebaseConfigured = firebaseConfig.apiKey !== "PASTE_YOUR_API_KEY_HERE";
+
