@@ -549,6 +549,38 @@ html, body {
   color: var(--paper);
 }
 
+.subject-filter {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--rule);
+}
+.subject-filter-btn {
+  background: transparent;
+  border: 1.5px solid var(--rule);
+  color: var(--ink-soft);
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.subject-filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+.subject-filter-btn.active {
+  background: var(--coral-soft);
+  border-color: var(--coral);
+  color: var(--ink);
+}
+
+.session-subj {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
 .topic-breakdown .topic-row {
   display: flex;
   align-items: center;
@@ -649,6 +681,70 @@ html, body {
   font-size: 13px;
 }
 .modal-card .btn { margin-top: 16px; width: 100%; }
+
+/* ============ SUBJECT PICKER ============ */
+.subjects-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+.subjects-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.subject-card {
+  background: var(--paper);
+  border: 2px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  box-shadow: var(--shadow);
+  font-family: var(--sans);
+}
+.subject-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--ink);
+}
+.subject-card .icon {
+  font-size: 44px;
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+.subject-card .name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.subject-card .desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.subject-card.math { border-left: 6px solid var(--coral); }
+.subject-card.physics { border-left: 6px solid #4a7bb8; }
+.subject-card.chemistry { border-left: 6px solid #7fa982; }
+.subject-card.biology { border-left: 6px solid #c68644; }
+
+.header-right {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 600px) {

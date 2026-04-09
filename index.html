@@ -45,6 +45,27 @@
   </div>
 </section>
 
+<!-- ============ SUBJECT PICKER ============ -->
+<section id="view-subjects" class="view">
+  <header class="app-header">
+    <div class="header-left">
+      <div class="avatar-chip" id="subj-avatar"></div>
+      <div>
+        <div class="header-greeting" id="subj-greeting">Hi there!</div>
+        <div class="header-sub" id="subj-class">Grade —</div>
+      </div>
+    </div>
+    <button class="btn btn-ghost" id="subj-logout">Sign out</button>
+  </header>
+
+  <main class="subjects-main">
+    <h2 class="subjects-title">What would you like to practice today?</h2>
+    <div class="subject-grid" id="subject-grid">
+      <!-- Filled by JS based on which subjects this profile has -->
+    </div>
+  </main>
+</section>
+
 <!-- ============ STUDENT DASHBOARD ============ -->
 <section id="view-student" class="view">
   <header class="app-header">
@@ -52,10 +73,13 @@
       <div class="avatar-chip" id="student-avatar"></div>
       <div>
         <div class="header-greeting" id="student-greeting">Hi there!</div>
-        <div class="header-sub" id="student-class">Grade —</div>
+        <div class="header-sub"><span id="student-class">Grade —</span> · <span id="student-subject">Math</span></div>
       </div>
     </div>
-    <button class="btn btn-ghost" id="student-logout">Sign out</button>
+    <div class="header-right">
+      <button class="btn btn-ghost" id="student-change-subject" hidden>← Subjects</button>
+      <button class="btn btn-ghost" id="student-logout">Sign out</button>
+    </div>
   </header>
 
   <main class="student-main">
@@ -68,8 +92,8 @@
     </div>
 
     <div class="card start-card">
-      <h2 class="card-title">Today's Practice</h2>
-      <p class="card-desc">15 questions · mixed topics from your grade</p>
+      <h2 class="card-title" id="start-card-title">Today's Practice</h2>
+      <p class="card-desc" id="start-card-desc">15 questions · mixed topics from your grade</p>
 
       <div class="topic-pills" id="topic-pills"></div>
 
