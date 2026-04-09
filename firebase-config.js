@@ -36,7 +36,8 @@ export const profiles = [
     emoji: '🦊',
     grade: 7,
     pin: '1234',          // ← change to a PIN your daughter will remember
-    role: 'student'
+    role: 'student',
+    subjects: ['math', 'physics', 'chemistry', 'biology']
   },
   {
     id: 'parent',
